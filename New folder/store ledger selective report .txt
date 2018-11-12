@@ -1,0 +1,42 @@
+/*List<ItemMaster> items = itemDao.getAllStoreItemMaster();
+			items.forEach(item->{
+				List<ScmSrLineItem> srlineitem = srlineitemDao.getScmSrLineItemByItemCode(item.getId());
+				List<ScmIssueLineItem> issuelineitem = issuelineitemDao.getLineItemsByItem(item.getId());
+				int flag1 = 0;
+				int flag2 = 0;
+				
+				ScmSrHdr srhdrd = new ScmSrHdr();
+				if(!srlineitem.isEmpty()) {
+					srhdrd = srhdrDao.getAllSrHdrBySrNoAndReceiptDate(srlineitem.get(0).getStoreReceiveNo(),
+																								startDate, endDate);
+					System.out.println(srhdrd);
+				}
+				
+				ScmIssueHdr issueHdr = new ScmIssueHdr();
+				if(!issuelineitem.isEmpty()) {
+					issueHdr = issuehdrDao.getScmIssuHdrBySrHdrAndIssueDate(
+															issuelineitem.get(0).getIssueNo(), 
+																							startDate, endDate);
+					System.out.println(issueHdr);
+				}
+				
+				ItemGroupMaster itemgroup = itemgrpDao.getItemGroupByGroupId(item.getgrpCode());
+				ItemGroupDept itemgrpmap = itemgrpmapDao.getItemGroupDeptMappingByItemGroup(itemgroup.getId()).get(0);
+				Department dept = deptDao.getDepartmentByDeptId(itemgrpmap.getDeptId());
+				List<PhysicalStock> stocks = physicalstockDao.getPhysicalStockByItem(item.getId());
+				
+				if(issueHdr==null || srhdrd==null) {
+					System.out.println("inside if");
+					System.out.println(issueHdr==null);
+					System.out.println(srhdrd==null);
+					item = null;
+					selectiveledgerDTO.add(null);
+				}else {
+					System.out.println("inside else");
+					System.out.println(issueHdr);
+					selectiveledgerDTO.add(prepareSelectiveLedgerDTO(
+							item, issueHdr, srhdrd, issuelineitem, srlineitem,itemgroup,itemgrpmap,dept,stocks));
+				}
+				
+				
+			});*/
